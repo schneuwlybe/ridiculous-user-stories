@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Datepicker",
+        "text": "As a Jira User, I want to have an inline help for the datepicker, so that I can learn how to use such a complex component.",
+        "app": "jira"
+    },
+    {
+        "title": "Confluence User Management",
+        "text": "As a Confluence User, I want to have an extra modal to remove users from a group, which lets me also select users not in the group, just in case.", 
+        "app": "confluence"
+    },
+    {
+        "title": "Confluence Page Naming",
+        "text": "As a Confluence User, I want a Confluence page name to be unique within a space, so that I can improve my creativity in naming pages.", 
+        "app": "confluence"
+    },
+    {
+        "title": "Github Large PRs",
+        "text": "As a Github User, I want to have all the files in a PR to be loaded at once rather than fast, so that i can review the PR on the horizontal Screens at Time Square.", 
+        "app": "github"
+    },
+]

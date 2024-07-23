@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridiculous User Stories</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #331E36;
+            color: #ffffff;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .grid-item {
+            width: 25%;
+            padding: 10px;
+            margin: 10px;
+            box-sizing: border-box;
+            box-shadow: 1px 2px 3px rgba(20, 20, 20, 0.4);
+            border: 2px solid #E3D7FF;
+            background-color: #6b57ff;
+            border-radius:10px;
+        }
+        .btn-primary{
+            background-color: #6b57ff;
+            border: 2px solid #E3D7FF;
+            border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center mt-4">Ridiculous User Stories</h1>
+    <div class="container">
+        This page is a place to share some of the weirdest implementations and UX decisions you come across in major tools.
+    </div>
+    <div class="container mt-4">
+        <div class="filter-menu mb-3">
+            <button data-filter="*" class="btn btn-primary">All</button>
+            <button data-filter=".confluence" class="btn btn-primary">Confluence</button>
+            <button data-filter=".jira" class="btn btn-primary">Jira</button>
+            <button data-filter=".github" class="btn btn-primary">Github</button>
+        </div>
+        <div class="grid">
+            <!-- Your user stories cards go here -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="./stories.json"></script>
+    <script>
+        fetch('stories.json')
+            .then(response => response.json())
+            .then(data => {
+                const grid = document.querySelector('.grid');
+                data.forEach(story => {
+                    const card = document.createElement('div');
+                    card.classList.add('grid-item', story.app);
+                    card.innerHTML = `
+                        <h3>${story.title}</h3>
+                        <p>${story.text}</p>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                // Initialize Isotope
+                const iso = new Isotope('.grid', {
+                    itemSelector: '.grid-item',
+                    layoutMode: 'fitRows',
+                    filter: '*',
+                });
+
+                // Handle filter button clicks
+                const filterButtons = document.querySelectorAll('.filter-menu button');
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const filterValue = button.getAttribute('data-filter');
+                        iso.arrange({ filter: filterValue });
+                    });
+                });
+            })
+            .catch(error => console.error('Error loading stories:', error));
+    </script>
+</body>
+</html>

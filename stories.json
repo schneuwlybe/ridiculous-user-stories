@@ -18,5 +18,5 @@
         "title": "Github Large PRs",
         "text": "As a Github User, I want to have all the files in a PR to be loaded at once rather than fast, so that i can review the PR on the horizontal Screens at Time Square.", 
         "app": "github"
-    },
+    }
 ]

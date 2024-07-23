@@ -6,7 +6,7 @@
     },
     {
         "title": "Confluence User Management",
-        "text": "As a Confluence User, I want to have an extra modal to remove users from a group, which lets me also select users not in the group, just in case.", 
+        "text": "As a Confluence User, I want to have an extra modal to remove users from a group, so that i can also select users not present in the group, just in case.", 
         "app": "confluence"
     },
     {
